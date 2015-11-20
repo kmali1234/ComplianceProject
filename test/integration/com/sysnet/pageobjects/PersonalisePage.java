@@ -82,14 +82,15 @@ package com.sysnet.pageobjects;
 			}
 			
 			public  PersonalisePage EnterPasswordEmail(){
-				driver.findElement(passwordLocator).sendKeys("password");
-				driver.findElement(conformPasswordLocator).sendKeys("confirmPassword");
+				driver.findElement(passwordLocator).sendKeys("Sysnet12");
+				driver.findElement(conformPasswordLocator).sendKeys("Sysnet12");
 				driver.findElement(emailLocator).clear();
-				driver.findElement(emailLocator).sendKeys("email");
+				driver.findElement(emailLocator).sendKeys("sysnet@sysnet.ie");
 				driver.findElement(conformEmailLocators).clear();
-				driver.findElement(conformEmailLocators).sendKeys("confirmEmail");
+				driver.findElement(conformEmailLocators).sendKeys("sysnet@sysnet.ie");
 				return this;
 			}
+			
 			
 			public  PersonalisePage submitForm(){
 				driver.findElement(submitButtonLocator).submit();
