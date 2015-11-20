@@ -22,7 +22,6 @@ import com.sysnet.pageobjects.LoginPage;
 	public class DoLogin {
 		
 		private Properties clientProps;
-		private String baseurl;
 		private String loginpageUrlSufix;
 		private WebDriver driver;
 		private String username;
@@ -31,10 +30,8 @@ import com.sysnet.pageobjects.LoginPage;
 		private String password;
 		private String url;
 		private String propertyfilepath1;
-		private Object mySheet;
 		private Object baseUrl;
-		private Object https;
-		
+
 
 		@Before
 		public void SetUp() throws Exception

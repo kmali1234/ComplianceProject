@@ -1,21 +1,18 @@
 package com.sysnet.pageobjects;
 
 		import java.util.NoSuchElementException;
-		import java.util.Properties;
-		import java.util.concurrent.TimeUnit;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
-		import org.openqa.selenium.By;
-		import org.openqa.selenium.WebDriver;
-		import org.openqa.selenium.WebElement;
-
-		import com.thoughtworks.selenium.webdriven.ElementFinder;
-		import com.thoughtworks.selenium.webdriven.commands.IsElementPresent;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 		public class PersonalisePage {
 
 			
 
-			private static WebDriver driver;
+			private WebDriver driver;
 			private By usernameFieldLocator;
 			private By conformUsernameLocator;
 			private By passwordLocator;
@@ -23,16 +20,12 @@ package com.sysnet.pageobjects;
 			private By emailLocator;
 			private By conformEmailLocators;
 			private By submitButtonLocator;
-			private static By acceptFieldLocator;
-			private String url;
-			private Properties props;
-			
-
+			private By acceptFieldLocator;
 			public PersonalisePage(WebDriver driver, Properties props) {
 				// TODO Auto-generated constructor stub
 				this.driver = driver;
 				
-				this.url =props.getProperty("baseUrl")+props.getProperty("personalise.url.suffix");
+				
 				
 				this.acceptFieldLocator=By.cssSelector(props.getProperty("personalise.button.accept.css"));
 				this.usernameFieldLocator=By.id(props.getProperty("personalise.textfield.username.id"));
