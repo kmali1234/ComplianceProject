@@ -1,24 +1,22 @@
-package com.sysnet.compliancemaker;
-
-
 		// TODO Auto-generated constructor stub
 		package com.sysnet.compliancemaker;
 
 
 		import java.io.File;
-	import java.io.FileInputStream;
-	import java.util.Properties;
+import java.io.FileInputStream;
+import java.util.Properties;
 
 	import org.apache.commons.io.FileUtils;
-	import org.junit.After;
-	import org.junit.Before;
-	import org.junit.Test;
-	import org.openqa.selenium.OutputType;
-	import org.openqa.selenium.TakesScreenshot;
-	import org.openqa.selenium.WebDriver;
-	import org.openqa.selenium.firefox.FirefoxDriver;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-	import com.sysnet.pageobjects.LoginPage;
+import com.sysnet.pageobjects.LoginPage;
+import com.sysnet.pageobjects.PersonalisePage;
 
 
 	//import com.sun.java.util.jar.pack.Package.File;
@@ -38,8 +36,10 @@ package com.sysnet.compliancemaker;
 			private Object mySheet;
 			private Object baseUrl;
 			private Object https;
-			
-
+			private String confirmPassword;
+            private String email;
+            private String confirmEmail;
+            
 			@Before
 			public void SetUp() throws Exception
 			{
@@ -52,14 +52,14 @@ package com.sysnet.compliancemaker;
 				baseUrl=clientProps.getProperty("baseUrl");
 				loginpageUrlSufix=clientProps.getProperty("login.url.suffix");
 				url = baseUrl+loginpageUrlSufix;
-				
-				
-				propertyfilepath1= "/test/integration/personaliseobjects.properties";
+				propertyfilepath1= "test/integration/objects.properties";
 				userprops = new Properties();
 				FileInputStream UserLocators = new FileInputStream(propertyfilepath1);
 				userprops.load(UserLocators);
+				username = userprops.getProperty("username");
 				password = userprops.getProperty("password");
-				confirmPassword = userprops.getProperty("confirmPassword");
+				
+				
 				
 			}
 			
@@ -75,6 +75,9 @@ package com.sysnet.compliancemaker;
 				lp.TypeUserName(username);
 				lp.TypePassword(password);
 				lp.SubmitLogin();
+				PersonalisePage pp = new PersonalisePage(driver, clientProps);
+				pp.doPersonalisation(username);
+				
 				// take the screenshot at the end of every test
 		        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		        // now save the screenshto to a file some place
@@ -91,11 +94,9 @@ package com.sysnet.compliancemaker;
 				 
 			}
 			
-			
+
+
+
+
 	}
 
-
-
-	}
-
-}
