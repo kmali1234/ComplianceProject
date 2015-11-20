@@ -72,7 +72,7 @@ import com.sysnet.pageobjects.LoginPage;
 			// take the screenshot at the end of every test
 	        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	        // now save the screenshto to a file some place
-	        FileUtils.copyFile(scrFile, new java.io.File("C:\\Users\\kmali\\Desktop\\Kavitha\\"));
+	        FileUtils.copyFile(scrFile, new java.io.File("ComplianceProject/Screenshots"));
 	        
 		}
 		
