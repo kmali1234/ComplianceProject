@@ -15,6 +15,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.sysnet.help.Assertions;
 import com.sysnet.pageobjects.LoginPage;
 import com.sysnet.pageobjects.PersonalisePage;
 
@@ -58,7 +59,7 @@ import com.sysnet.pageobjects.PersonalisePage;
 			
 			
 			@Test
-			public void MerchantLogin() throws Exception
+			public void getPersonalise() throws Exception
 			{
 				driver = new FirefoxDriver();
 				driver.manage().window().maximize();
@@ -72,6 +73,9 @@ import com.sysnet.pageobjects.PersonalisePage;
 		        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		        // now save the screenshto to a file some place
 		        FileUtils.copyFile(scrFile, new java.io.File("ComplianceProject/Screenshots"));
+		        FileUtils.copyFile(scrFile, new java.io.File("ComplianceProject/Screenshots"));
+		        Assertions pers = new Assertions(driver, clientProps);
+		        pers.assertTitle("Personalise");
 		        
 			}
 			
