@@ -2,11 +2,11 @@
 		package com.sysnet.compliancemaker;
 
 
-		import java.io.File;
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-	import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,12 +1,11 @@
 package com.sysnet.pageobjects;
 
-		import java.util.NoSuchElementException;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.sysnet.help.SeleniumHelper;
 
 		public class PersonalisePage {
 
@@ -21,6 +20,7 @@ import org.openqa.selenium.WebElement;
 			private By conformEmailLocators;
 			private By submitButtonLocator;
 			private By acceptFieldLocator;
+			private Properties props;
 			public PersonalisePage(WebDriver driver, Properties props) {
 				
 				this.driver = driver;
@@ -39,8 +39,9 @@ import org.openqa.selenium.WebElement;
 			}
 
 			public void doPersonalisation(String username) {
+				SeleniumHelper sh = new SeleniumHelper(driver,props);
 				
-				if(isElementDisplayed(acceptFieldLocator)){
+				if(sh.isElementDisplayed(acceptFieldLocator)){
 					WebElement understandButton = driver.findElement(acceptFieldLocator);
 					understandButton.click();
 				}
@@ -53,7 +54,9 @@ import org.openqa.selenium.WebElement;
 
 			private void isPerssonalised(String username) {
 				
-				if (isElementDisplayed(usernameFieldLocator)) {
+				SeleniumHelper sh = new SeleniumHelper(driver,props);
+				
+				if (sh.isElementDisplayed(usernameFieldLocator)) {
 					enterUserName(username);
 					EnterPasswordEmail();
 					submitForm();
@@ -91,38 +94,6 @@ import org.openqa.selenium.WebElement;
 				return this;
 			}	
 
-
-			private boolean isElementPresent(By by) {
-				/*This boolean method checks if the element passed to it is present on a page or not
-				*The method creates a list of WebElements that match the "By" variable passed to it as an argument
-				*If the size of this list is greater than 0, then the Element is present on the page.
-				*Because Selenium WebDriver can take a while to search for an element, the call to create the list
-				*times out after 2 seconds*/
-				try {
-					driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-					return driver.findElements(by).size() > 0;
-					
-				} catch (NoSuchElementException e) {
-					return false;
-				}
-			}
-
-			
-			
-			private boolean isElementDisplayed(By by){
-					driver.manage().timeouts().implicitlyWait(250, TimeUnit.MILLISECONDS);
-					if (isElementPresent(by)) {
-					    if (driver.findElement(by).isDisplayed()) {
-					        return true;
-					    } else
-					        return false;
-					} else
-					        return false;
-				}
-				
-
-		
-
-	}
+}
 
 
