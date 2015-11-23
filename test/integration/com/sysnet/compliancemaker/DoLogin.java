@@ -14,6 +14,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.sysnet.help.Assertions;
 import com.sysnet.pageobjects.LoginPage;
 
 
@@ -70,6 +71,8 @@ import com.sysnet.pageobjects.LoginPage;
 	        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	        // now save the screenshto to a file some place
 	        FileUtils.copyFile(scrFile, new java.io.File("ComplianceProject/Screenshots"));
+	        Assertions as = new Assertions(driver, clientProps);
+	        as.assertTitle("Merchant Services");
 	        
 		}
 		
