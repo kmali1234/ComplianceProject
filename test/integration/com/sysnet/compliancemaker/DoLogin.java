@@ -52,7 +52,7 @@ import com.sysnet.pageobjects.LoginPage;
 			FileInputStream UserLocators = new FileInputStream(propertyfilepath1);
 			userprops.load(UserLocators);
 			username = userprops.getProperty("username");
-			password = userprops.getProperty("password");
+			password = userprops.getProperty("password"); 
 			
 			
 		}
@@ -65,10 +65,7 @@ import com.sysnet.pageobjects.LoginPage;
 			driver.manage().window().maximize();
 			driver.get(url);
 			LoginPage lp = new LoginPage(driver, clientProps);
-			lp.navigateTo();
-			lp.TypeUserName(username);
-			lp.TypePassword(password);
-			lp.SubmitLogin();
+			lp.LoginUser(username, password);
 			// take the screenshot at the end of every test
 	        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	        // now save the screenshto to a file some place

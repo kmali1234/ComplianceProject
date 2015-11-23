@@ -1,4 +1,4 @@
-		// TODO Auto-generated constructor stub
+
 		package com.sysnet.compliancemaker;
 
 
@@ -24,7 +24,6 @@ import com.sysnet.pageobjects.PersonalisePage;
 		public class DoPersonalise {
 			
 			private Properties clientProps;
-
 			private String loginpageUrlSufix;
 			private WebDriver driver;
 			private String username;
@@ -34,8 +33,6 @@ import com.sysnet.pageobjects.PersonalisePage;
 			private String url;
 			private String propertyfilepath1;
 			private Object baseUrl;
-
-            
 			@Before
 			public void SetUp() throws Exception
 			{
@@ -67,17 +64,14 @@ import com.sysnet.pageobjects.PersonalisePage;
 				driver.manage().window().maximize();
 				driver.get(url);
 				LoginPage lp = new LoginPage(driver, clientProps);
-				lp.navigateTo();
-				lp.TypeUserName(username);
-				lp.TypePassword(password);
-				lp.SubmitLogin();
+				lp.LoginUser(username, password);
 				PersonalisePage pp = new PersonalisePage(driver, clientProps);
 				pp.doPersonalisation(username);
 				
 				// take the screenshot at the end of every test
 		        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		        // now save the screenshto to a file some place
-		        FileUtils.copyFile(scrFile, new java.io.File("ComplianceProject/Screenshots"));
+		        FileUtils.copyFile(scrFile, new java.io.File("C:\\Users\\kmali\\Desktop\\Kavitha\\"));
 		        
 			}
 			

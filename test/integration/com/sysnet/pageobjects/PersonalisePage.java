@@ -22,7 +22,7 @@ import org.openqa.selenium.WebElement;
 			private By submitButtonLocator;
 			private By acceptFieldLocator;
 			public PersonalisePage(WebDriver driver, Properties props) {
-				// TODO Auto-generated constructor stub
+				
 				this.driver = driver;
 				
 				
@@ -39,7 +39,7 @@ import org.openqa.selenium.WebElement;
 			}
 
 			public void doPersonalisation(String username) {
-				// TODO Auto-generated method stub
+				
 				if(isElementDisplayed(acceptFieldLocator)){
 					WebElement understandButton = driver.findElement(acceptFieldLocator);
 					understandButton.click();
@@ -52,7 +52,7 @@ import org.openqa.selenium.WebElement;
 			}
 
 			private void isPerssonalised(String username) {
-				// TODO Auto-generated method stub
+				
 				if (isElementDisplayed(usernameFieldLocator)) {
 					enterUserName(username);
 					EnterPasswordEmail();
@@ -65,7 +65,7 @@ import org.openqa.selenium.WebElement;
 			}
 
 			private PersonalisePage enterUserName(String username) {
-				// TODO Auto-generated method stub
+			
 				driver.findElement(usernameFieldLocator).clear();
 				driver.findElement(usernameFieldLocator).sendKeys(username);
 				driver.findElement(conformUsernameLocator).clear();

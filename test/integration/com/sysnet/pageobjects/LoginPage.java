@@ -1,9 +1,5 @@
 package com.sysnet.pageobjects;
 
-
-
-
-
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -52,6 +48,17 @@ public class LoginPage {
 		driver.findElement(loginbuttonlocator).submit();
 	log.debug("Loging in as a merchant");
 		return this;
+	}
+	
+	public void LoginUser(String username,String password)
+
+     	
+	{	
+		navigateTo();
+		TypeUserName(username);
+		TypePassword(password);
+		SubmitLogin();
+				
 	}
 	
       
