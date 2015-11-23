@@ -14,6 +14,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.sysnet.help.Assertions;
 import com.sysnet.pageobjects.LoginPage;
 
 
@@ -52,7 +53,7 @@ import com.sysnet.pageobjects.LoginPage;
 			FileInputStream UserLocators = new FileInputStream(propertyfilepath1);
 			userprops.load(UserLocators);
 			username = userprops.getProperty("username");
-			password = userprops.getProperty("password");
+			password = userprops.getProperty("password"); 
 			
 			
 		}
@@ -65,14 +66,13 @@ import com.sysnet.pageobjects.LoginPage;
 			driver.manage().window().maximize();
 			driver.get(url);
 			LoginPage lp = new LoginPage(driver, clientProps);
-			lp.navigateTo();
-			lp.TypeUserName(username);
-			lp.TypePassword(password);
-			lp.SubmitLogin();
+			lp.LoginUser(username, password);
 			// take the screenshot at the end of every test
 	        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	        // now save the screenshto to a file some place
-	        FileUtils.copyFile(scrFile, new java.io.File("C:\\Users\\kmali\\Desktop\\Kavitha\\"));
+	        FileUtils.copyFile(scrFile, new java.io.File("ComplianceProject/Screenshots"));
+	        Assertions as = new Assertions(driver, clientProps);
+	        as.assertTitle("Merchant Services");
 	        
 		}
 		

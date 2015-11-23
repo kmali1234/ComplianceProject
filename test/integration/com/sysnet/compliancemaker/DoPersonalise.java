@@ -1,12 +1,12 @@
-		// TODO Auto-generated constructor stub
+
 		package com.sysnet.compliancemaker;
 
 
-		import java.io.File;
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-	import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +15,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.sysnet.help.Assertions;
 import com.sysnet.pageobjects.LoginPage;
 import com.sysnet.pageobjects.PersonalisePage;
 
@@ -24,7 +25,6 @@ import com.sysnet.pageobjects.PersonalisePage;
 		public class DoPersonalise {
 			
 			private Properties clientProps;
-
 			private String loginpageUrlSufix;
 			private WebDriver driver;
 			private String username;
@@ -34,8 +34,6 @@ import com.sysnet.pageobjects.PersonalisePage;
 			private String url;
 			private String propertyfilepath1;
 			private Object baseUrl;
-
-            
 			@Before
 			public void SetUp() throws Exception
 			{
@@ -61,23 +59,22 @@ import com.sysnet.pageobjects.PersonalisePage;
 			
 			
 			@Test
-			public void MerchantLogin() throws Exception
+			public void getPersonalise() throws Exception
 			{
 				driver = new FirefoxDriver();
 				driver.manage().window().maximize();
 				driver.get(url);
 				LoginPage lp = new LoginPage(driver, clientProps);
-				lp.navigateTo();
-				lp.TypeUserName(username);
-				lp.TypePassword(password);
-				lp.SubmitLogin();
+				lp.LoginUser(username, password);
 				PersonalisePage pp = new PersonalisePage(driver, clientProps);
 				pp.doPersonalisation(username);
 				
 				// take the screenshot at the end of every test
 		        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		        // now save the screenshto to a file some place
-		        FileUtils.copyFile(scrFile, new java.io.File("C:\\Users\\kmali\\Desktop\\Kavitha\\"));
+		        FileUtils.copyFile(scrFile, new java.io.File("ComplianceProject/Screenshots"));
+		        Assertions pers = new Assertions(driver, clientProps);
+		        pers.assertTitle("Personalise");
 		        
 			}
 			
