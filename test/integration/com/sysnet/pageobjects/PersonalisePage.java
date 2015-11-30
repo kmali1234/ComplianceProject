@@ -38,34 +38,14 @@ import com.sysnet.help.SeleniumHelper;
 				
 			}
 
-			public void doPersonalisation(String username) {
-				SeleniumHelper sh = new SeleniumHelper(driver,props);
-				
-				if(sh.isElementDisplayed(acceptFieldLocator)){
-					WebElement understandButton = driver.findElement(acceptFieldLocator);
-					understandButton.click();
-				}
-				System.out.println("Checking wether personalised or not");
-				isPerssonalised(username);
-				
-				
+			public void personaliseMerchant(String username) {
+				enterUserName(username);
+				EnterPasswordEmail();
+				submitForm();
 				
 			}
 
-			private void isPerssonalised(String username) {
-				
-				SeleniumHelper sh = new SeleniumHelper(driver,props);
-				
-				if (sh.isElementDisplayed(usernameFieldLocator)) {
-					enterUserName(username);
-					EnterPasswordEmail();
-					submitForm();
-					}else{
-						System.out.println("Merchant is Personalised");
-					}
-				
-				
-			}
+			
 
 			private PersonalisePage enterUserName(String username) {
 			
